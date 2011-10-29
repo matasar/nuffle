@@ -3,13 +3,13 @@
 --
 -- This file should be executed exactly once for every installation
 -- of the Blood Bowl Web Manager.
--- 
+--
 -- First this script creates all of the tables. Second, it populates
 -- these tables with basic data.
 --
 -- The following versions of MySQL are used by the developers, and are
 -- known to function correctly with this script.
--- 
+--
 -- Server version	3.23.36  (eshin)
 -- Server version	3.23.54  (oberon7)
 --
@@ -116,7 +116,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ game_players (
 --
 --  game_id -> games.game_id
 --  tr : team rating before match
---  score : score for this 
+--  score : score for this
 --  ff : change in fan factor (e.g. '-1', '0', or '1')
 --
 
@@ -214,6 +214,19 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ levels (
   spp tinyint(3) unsigned NOT NULL default '0',
   PRIMARY KEY  (name)
 ) TYPE=MyISAM;
+
+--
+-- Table structure for table 'medal'
+--
+--  type -> gold, silver, bronze
+--  team_id -> link to team
+--
+CREATE TABLE /*!32312 IF NOT EXISTS*/ medal (
+  id int(6) unsigned NOT NULL auto_increment,
+  team_id int(6) unsigned,
+  type enum('GOLD', 'SILVER', 'BRONZE') NOT NULL default 'GOLD',
+  PRIMARY KEY (id)
+);
 
 --
 -- Table structure for table 'news'
